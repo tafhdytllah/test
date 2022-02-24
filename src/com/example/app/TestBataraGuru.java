@@ -92,12 +92,6 @@ public class TestBataraGuru {
         Assertions.assertEquals("2-4-6-8", dashGenap("2468"));
     }
 
-
-
-
-
-
-
     public int factorial(int value) {
 
         if (value == 0) {

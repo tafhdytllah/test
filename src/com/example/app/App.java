@@ -29,7 +29,6 @@ public class App {
 
             rs = stmt.executeQuery(sql);
 
-
             ArrayList<ArrayList<String>> karyawan = new ArrayList<ArrayList<String>>();
 
             while (rs.next()) {
@@ -78,41 +77,28 @@ public class App {
                  * middle officer = 125_000
                  * junior officer = 100_000
                  */
-                int bonus;
-                switch (jabatan) {
-                    case "Manager":
-                        bonus = 250_000;
-                        break;
-                    case "Ass. Manager":
-                        bonus = 175_000;
-                        break;
-                    case "Senior Officer":
-                        bonus = 150_000;
-                        break;
-                    case "Middle Officer":
-                        bonus = 125_000;
-                        break;
-                    case "Junior Office":
-                        bonus = 100_000;
-                        break;
-                    default:
-                        bonus = 0;
-                }
+                int bonus = switch (jabatan) {
+                    case "Manager" -> 250_000;
+                    case "Ass. Manager" -> 175_000;
+                    case "Senior Officer" -> 150_000;
+                    case "Middle Officer" -> 125_000;
+                    case "Junior Office" -> 100_000;
+                    default -> 0;
+                };
 
-                double total = gaji + tunjangan + bonus;
+                int total = gaji + tunjangan + bonus;
 
                 switch (region) {
                     case "Jakarta":
-                        total = total - (total * 2.5 / 100);
+                        total = (int) (total - (total * 2.5 / 100));
                         break;
                     case "Bandung":
                         total = total - (total * 2 / 100);
                         break;
                     default:
-                        total = total - (total * 1.8 / 100);
+                        total = (int) (total - (total * 1.8 / 100));
 
                 }
-
 
                 ArrayList<String> inner = new ArrayList<String>();
                 inner.add(nama);
@@ -130,10 +116,9 @@ public class App {
             System.out.println("Data Karyawan:");
             System.out.println("Nama - Gaji - Jabatan - Region - Tunjangan - Bonus - Total");
 
-            for (int i = 0; i < karyawan.size(); i++) {
-                System.out.println(karyawan.get(i));
+            for (ArrayList<String> strings : karyawan) {
+                System.out.println(strings);
             }
-
 
             stmt.close();
             conn.close();
