@@ -5,6 +5,48 @@ import org.junit.jupiter.api.Test;
 
 public class TestBataraGuru {
 
+    /**
+     * (SOAL NOMOR 5 TIDAK TERHITUNG KARENA DIKERJAKAN DIRUMAH)
+     *
+     * jumlah uang = 1_895_250
+     * pecahan : 100_000, 50_000, 20_000, 5_000, 1_000, 50
+     * berapa banyak masing masing uang pecahan
+     */
+
+    public void jumlahUangPecahan(int uang) {
+
+        if (uang >= 100_000) {
+            uang = uang - (jumlahPecahan(100_000, uang) * 100_000);
+        }
+        if (uang >= 50_000) {
+            uang = uang - (jumlahPecahan(50_000, uang) * 50_000);
+        }
+        if (uang >= 20_000) {
+            uang = uang - (jumlahPecahan(20_000, uang) * 20_000);
+        }
+        if (uang >= 5_000) {
+            uang = uang - (jumlahPecahan(5_000, uang) * 5_000);
+        }
+        if (uang >= 1_000) {
+            uang = uang - (jumlahPecahan(1_000, uang) * 1_000);
+        }
+        if (uang >= 50) {
+            uang = uang - (jumlahPecahan(50, uang) * 50);
+        }
+    }
+
+    public int jumlahPecahan(int pecahan , int uang) {
+
+        int jumlahPecahan = uang / pecahan;
+        System.out.println("Rp "+pecahan+" -> " + jumlahPecahan + " lembar");
+
+        return jumlahPecahan;
+    }
+
+    @Test
+    void test() {
+        jumlahUangPecahan(1_895_250);
+    }
 
     /**
      *
